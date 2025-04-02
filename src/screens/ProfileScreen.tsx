@@ -9,7 +9,6 @@ import { LineChart } from 'react-native-chart-kit';
 
 const screenWidth = Dimensions.get('window').width;
 
-// دالة لإرجاع بيانات الرسم البياني بناءً على نوع الإحصائيات المختار
 const getChartData = (type: string) => {
   switch (type) {
     case 'يوم واحد':
@@ -59,7 +58,6 @@ const ProfileScreen: React.FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const statsOptions = ['يوم واحد', 'أسبوع', 'شهر', 'الجميع'];
 
-  // متغيرات معلومات المستخدم، القائمة الجانبية والنافذة المنبثقة
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedField, setSelectedField] = useState('');
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -72,10 +70,9 @@ const ProfileScreen: React.FC = () => {
   const handleEdit = (field: string) => {
     setSelectedField(field);
     setModalVisible(true);
-    setSidebarVisible(false); // إخفاء القائمة الجانبية عند فتح النافذة المنبثقة
+    setSidebarVisible(false); 
   };
 
-  // هنا نستقبل القيمة الجديدة من TextInput ونحدث معلومات المستخدم
   const handleSave = (newValue: string) => {
     setUserInfo((prev) => ({ ...prev, [selectedField]: newValue }));
     setModalVisible(false);
@@ -92,7 +89,7 @@ const ProfileScreen: React.FC = () => {
   // بيانات الرسم البياني والإحصائيات
   const chartData = getChartData(statsType);
   const totalOrders = chartData.datasets[0].data.reduce((sum, value) => sum + value, 0);
-  const overallOrders = 1000; // مثال على إجمالي الطلبات
+  const overallOrders = 1000; 
 
   return (
     <TouchableWithoutFeedback onPress={closeSidebar}>
@@ -122,7 +119,6 @@ const ProfileScreen: React.FC = () => {
 
           {/* قسم الإحصائيات */}
           <View style={styles.statistics}>
-            {/* القائمة المنسدلة لاختيار فترة الإحصائيات */}
             <View style={styles.optionsRow}>
                   {statsOptions.map((option, index) => (
                    <TouchableOpacity
@@ -139,7 +135,6 @@ const ProfileScreen: React.FC = () => {
             </View>
 
 
-            {/* الرسم البياني باستخدام */}
             <LineChart
               data={chartData}
               width={screenWidth - 20}
@@ -163,7 +158,6 @@ const ProfileScreen: React.FC = () => {
               style={styles.chart}
             />
 
-            {/* عرض ملخص بيانات الإحصائيات */}
             <View style={styles.dataSummary}>
               <Text style={styles.dataText}> الطلبات الحالية : {totalOrders}</Text>
               <Text style={styles.dataText}>العدد الكلي: {overallOrders}</Text>
@@ -171,7 +165,6 @@ const ProfileScreen: React.FC = () => {
           </View>
         </ScrollView>
 
-        {/* نافذة منبثقة لتعديل المعلومات */}
         <Modal
           animationType="slide"
           transparent={true}
