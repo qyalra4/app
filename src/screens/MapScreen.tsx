@@ -74,29 +74,24 @@ const MapScreen: React.FC = () => {
         <View style={styles.modalContent}>
           <Text style={styles.modalTitle}>معلومات الطلب</Text>
           
-          {/* معلومات الزبون */}
           <View style={styles.userInfoContainer}>
             <Text style={styles.sectionTitle}>معلومات الزبون</Text>
             <Text>اسم الزبون: محمد علي</Text>
             <Text>رقم الهاتف: 07712345678</Text>
           </View>
 
-          {/* معلومات الطلب */}
           <View style={styles.orderInfoContainer}>
             <Text style={styles.sectionTitle}>معلومات الطلبية</Text>
             <Text>معلومات الطلبية: طلب بيتزا</Text>
             
-            {/* تمرير الصور */}
             <ScrollView style={styles.orderI} horizontal showsHorizontalScrollIndicator={false}>
               <Image source={require ('../images/b.jpg')} style={styles.orderImage} />
               <Image source={require ('../images/d.jpg')} style={styles.orderImage} />
               <Image source={require ('../images/p.jpg')} style={styles.orderImage} />
               <Image source={require ('../images/e.jpg')} style={styles.orderImage} />
-              {/* أضف المزيد من الصور حسب الحاجة */}
             </ScrollView>
           </View>
 
-          {/* أزرار التحكم */}
           <TouchableOpacity style={styles.startButton} onPress={handleStartDelivery}>
             <Text style={styles.startButtonText}>بدء التوصيل</Text>
           </TouchableOpacity>
@@ -160,7 +155,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginBottom: 5, // يضيف مسافة بين الصورة والنص
+    marginBottom: 5, 
   },
   markerText: {
     fontSize: 12,
@@ -171,14 +166,14 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 5,
     position: 'absolute',
-    top: 45, // يحرك النص للأسفل ليظهر تحت الصورة
+    top: 45, 
   },
   
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // خلفية مظللة
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
   },
   modalContent: {
     direction: 'rtl',
